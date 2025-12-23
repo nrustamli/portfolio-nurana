@@ -10,8 +10,13 @@ const aldrich = Aldrich({
 });
 
 export const metadata: Metadata = {
-  title: "Nurana Rustamli - Portfolio",
-  description: "Modern portfolio website featuring 3D animations",
+  title: "Nurana Rustamli",
+  description: "My personal portfolio website where you can find out about my projects, download my resume and explore my blog.",
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
