@@ -1,5 +1,5 @@
+import Star3D from '@/components/Star3D'
 import NavigationCard from '@/components/NavigationCard'
-import SocialLinks from '@/components/SocialLinks'
 import { navigationItems } from '@/lib/constants'
 
 export default function Home() {
@@ -13,24 +13,29 @@ export default function Home() {
       </div>
 
       {/* Main Content Area */}
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-        {/* Navigation Cards Grid */}
-        <div className="grid grid-cols-2 gap-4 w-full max-w-md mb-12">
-          {navigationItems.map((item) => (
-            <NavigationCard
-              key={item.href}
-              iconName={item.iconName}
-              iconPath={item.iconPath}
-              title={item.title}
-              href={item.href}
-              color={item.color}
-            />
-          ))}
+      <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+        {/* Left Side - 3D Star */}
+        <div className="w-full lg:w-[60%] flex flex-col items-start justify-start relative">
+          <div className="w-full h-[60vh] lg:h-[80vh] flex items-center justify-center">
+            <Star3D className="w-full h-full" />
+          </div>
         </div>
 
-        {/* Social Links - Bottom Center */}
-        <div className="flex justify-center">
-          <SocialLinks />
+        {/* Right Side - Navigation Cards */}
+        <div className="w-full lg:w-[40%] flex flex-col items-center lg:items-start justify-center lg:justify-start pt-8 lg:pt-0">
+          {/* Navigation Cards Grid */}
+          <div className="grid grid-cols-2 gap-4 w-full max-w-md">
+            {navigationItems.map((item) => (
+              <NavigationCard
+                key={item.href}
+                iconName={item.iconName}
+                iconPath={item.iconPath}
+                title={item.title}
+                href={item.href}
+                color={item.color}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </main>
