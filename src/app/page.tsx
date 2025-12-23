@@ -4,7 +4,7 @@ import { navigationItems } from '@/lib/constants'
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative p-8 md:p-12 lg:p-24" style={{ backgroundColor: '#F0EEEB' }}>
+    <main className="min-h-screen relative p-8 md:p-12 lg:p-24" style={{ backgroundColor: '#F5F7FA' }}>
       {/* Name - Top Center */}
       <div className="w-full flex justify-center mb-8 lg:mb-12">
         <h1 className="text-4xl md:text-5xl lg:text-6xl text-black font-aldrich font-thin-aldrich">
