@@ -7,9 +7,9 @@ export default function Home() {
     <main className="min-h-screen relative p-8 md:p-12 lg:p-24" style={{ backgroundColor: '#F5F7FA' }}>
       {/* Name - Top Center */}
       <div className="w-full flex justify-center mb-8 lg:mb-12">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl text-black font-aldrich font-thin-aldrich">
+        <a href="/" className="text-4xl md:text-5xl lg:text-6xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity cursor-pointer">
           Nurana Rustamli
-        </h1>
+        </a>
       </div>
 
       {/* Main Content Area */}

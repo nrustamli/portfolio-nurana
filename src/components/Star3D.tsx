@@ -139,10 +139,10 @@ export default function Star3D({ className = '' }: Star3DProps) {
           canvas.height = size
           const ctx = canvas.getContext('2d')!
           const imageData = ctx.createImageData(size, size)
-          imageData.data.set(textures[0].image.data)
+          imageData.data.set(textures[0].image.data!)
           return canvas
         })
-      )
+      ) 
 
       return cubeTexture
     }
@@ -234,7 +234,9 @@ export default function Star3D({ className = '' }: Star3DProps) {
 
     // Animation loop with 3-axis rotation
     let time = 0
+    let disposed = false
     const animate = () => {
+      if (disposed) return
       animationIdRef.current = requestAnimationFrame(animate)
       time += 0.02485
 
@@ -250,11 +252,11 @@ export default function Star3D({ className = '' }: Star3DProps) {
 
     // Handle resize
     const handleResize = () => {
-      if (!containerRef.current) return
-      
+      if (!containerRef.current || disposed) return
+
       const width = containerRef.current.clientWidth
       const height = containerRef.current.clientHeight
-      
+
       camera.aspect = width / height
       camera.updateProjectionMatrix()
       renderer.setSize(width, height)
@@ -264,19 +266,30 @@ export default function Star3D({ className = '' }: Star3DProps) {
 
     // Cleanup
     return () => {
+      disposed = true
       window.removeEventListener('resize', handleResize)
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current)
+        animationIdRef.current = null
       }
-      if (rendererRef.current && containerRef.current) {
-        containerRef.current.removeChild(rendererRef.current.domElement)
+
+      // Safely remove the canvas from the DOM
+      const canvas = renderer.domElement
+      if (canvas.parentNode) {
+        canvas.parentNode.removeChild(canvas)
       }
+
+      // Dispose Three.js resources
       geometry.dispose()
       matcapTexture.dispose()
       material.dispose()
+      envGeometry.dispose()
+      envMaterial.dispose()
       envMap.dispose()
       pmremGenerator.dispose()
+      renderer.forceContextLoss()
       renderer.dispose()
+      rendererRef.current = null
     }
   }, [])
 
