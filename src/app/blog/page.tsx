@@ -4,42 +4,12 @@ import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
 
 const posts = [
-  {
-    id: 1,
-    title: 'Blog Post One',
-    description: 'A brief summary of the first blog post and what it covers.',
-    cover: null,
-  },
-  {
-    id: 2,
-    title: 'Blog Post Two',
-    description: 'A brief summary of the second blog post and what it covers.',
-    cover: null,
-  },
-  {
-    id: 3,
-    title: 'Blog Post Three',
-    description: 'A brief summary of the third blog post and what it covers.',
-    cover: null,
-  },
-  {
-    id: 4,
-    title: 'Blog Post Four',
-    description: 'A brief summary of the fourth blog post and what it covers.',
-    cover: null,
-  },
-  {
-    id: 5,
-    title: 'Blog Post Five',
-    description: 'A brief summary of the fifth blog post and what it covers.',
-    cover: null,
-  },
-  {
-    id: 6,
-    title: 'Blog Post Six',
-    description: 'A brief summary of the sixth blog post and what it covers.',
-    cover: null,
-  },
+  { id: 1, title: 'Blog Post One' },
+  { id: 2, title: 'Blog Post Two' },
+  { id: 3, title: 'Blog Post Three' },
+  { id: 4, title: 'Blog Post Four' },
+  { id: 5, title: 'Blog Post Five' },
+  { id: 6, title: 'Blog Post Six' },
 ]
 
 const cardVariants: Variants = {
@@ -70,7 +40,7 @@ export default function BlogPage() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-col gap-0 max-w-2xl">
           {posts.map((post, i) => (
             <motion.div
               key={post.id}
@@ -78,41 +48,22 @@ export default function BlogPage() {
               initial="hidden"
               animate="visible"
               variants={cardVariants}
-              whileHover={{ scale: 1.02, y: -4 }}
+              whileHover={{ x: 8 }}
               whileTap={{ scale: 0.98 }}
               className="
                 bg-white/20
                 backdrop-blur-md
-                border border-white/30
-                rounded-lg
-                shadow-lg
-                hover:shadow-xl
+                border-b border-white/30
+                py-4 px-5
                 hover:bg-white/30
                 transition-all
                 duration-300
                 cursor-pointer
-                overflow-hidden
               "
             >
-              {post.cover ? (
-                <img
-                  src={post.cover}
-                  alt={post.title}
-                  className="w-full aspect-[16/10] object-cover"
-                />
-              ) : (
-                <div className="w-full aspect-[16/10] bg-gray-300/40 flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Cover Image</span>
-                </div>
-              )}
-              <div className="p-5">
-                <h2 className="text-lg font-semibold text-black mb-2">
-                  {post.title}
-                </h2>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {post.description}
-                </p>
-              </div>
+              <h2 className="text-lg font-semibold text-black font-aldrich">
+                {post.title}
+              </h2>
             </motion.div>
           ))}
         </div>
