@@ -2,9 +2,9 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import HelixPointCloud3D from '@/components/HelixPointCloud3D'
+import CameraPointCloud3D from '@/components/CameraPointCloud3D'
 
-export default function ProteinLLMPage() {
+export default function SpotTheArtistPage() {
   return (
     <main
       className="min-h-screen relative p-8 md:p-12 lg:p-24"
@@ -26,13 +26,13 @@ export default function ProteinLLMPage() {
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
           <h1 className="text-4xl md:text-5xl text-black font-aldrich font-thin-aldrich mb-10">
-            Domain BERT
+            Spot the Artist
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Left — Three.js visualization */}
             <div className="w-full aspect-square overflow-hidden">
-              <HelixPointCloud3D />
+              <CameraPointCloud3D />
             </div>
 
             {/* Right — Links + Description */}
@@ -58,7 +58,7 @@ export default function ProteinLLMPage() {
                   GitHub
                 </a>
                 <a
-                  href="/papers/domain-bert.pdf"
+                  href="/papers/spot-the-artist.pdf"
                   download
                   className="
                     inline-flex items-center gap-2
