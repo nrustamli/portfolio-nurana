@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import CameraPointCloud3D from '@/components/CameraPointCloud3D'
+import FlowerPointCloud3D from '@/components/FlowerPointCloud3D'
 import Star3D from '@/components/Star3D'
 
-export default function SpotTheArtistPage() {
+export default function GalanthusPage() {
   return (
     <main
       className="min-h-screen relative p-8 md:p-12 lg:p-24"
@@ -32,13 +32,13 @@ export default function SpotTheArtistPage() {
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
           <h1 className="text-4xl md:text-5xl text-black font-aldrich font-thin-aldrich mb-10">
-            Spot the Artist
+            Galanthus
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* Left — Three.js visualization */}
             <div className="w-full aspect-square overflow-hidden">
-              <CameraPointCloud3D />
+              <FlowerPointCloud3D />
             </div>
 
             {/* Right — Links + Description */}
@@ -64,7 +64,7 @@ export default function SpotTheArtistPage() {
                   GitHub
                 </a>
                 <a
-                  href="/papers/spot-the-artist.pdf"
+                  href="/papers/galanthus.pdf"
                   download
                   className="
                     inline-flex items-center gap-2

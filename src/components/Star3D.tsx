@@ -6,9 +6,10 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js'
 
 interface Star3DProps {
   className?: string
+  minHeight?: string
 }
 
-export default function Star3D({ className = '' }: Star3DProps) {
+export default function Star3D({ className = '', minHeight = '400px' }: Star3DProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
   const animationIdRef = useRef<number | null>(null)
@@ -240,10 +241,7 @@ export default function Star3D({ className = '' }: Star3DProps) {
       animationIdRef.current = requestAnimationFrame(animate)
       time += 0.02485
 
-      // Smooth multi-axis rotation for natural tumbling
-      starMesh.rotation.x = Math.sin(time * 0.2) * 0.3 + time * 0.2
-      starMesh.rotation.y = time * 0.4
-      starMesh.rotation.z = Math.cos(time * 0.1) * 0.2 + time * 0.3
+      starMesh.rotation.z = time * 0.4
 
       renderer.render(scene, camera)
     }
@@ -297,7 +295,7 @@ export default function Star3D({ className = '' }: Star3DProps) {
     <div 
       ref={containerRef} 
       className={`w-full h-full ${className}`}
-      style={{ minHeight: '400px' }}
+      style={{ minHeight }}
     />
   )
 }

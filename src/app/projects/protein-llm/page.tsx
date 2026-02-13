@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import HelixPointCloud3D from '@/components/HelixPointCloud3D'
+import Star3D from '@/components/Star3D'
 
 export default function ProteinLLMPage() {
   return (
@@ -12,12 +13,17 @@ export default function ProteinLLMPage() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <Link
-            href="/"
-            className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
-          >
-            Nurana Rustamli
-          </Link>
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7">
+              <Star3D className="w-full h-full" minHeight="0" />
+            </div>
+            <Link
+              href="/"
+              className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
+            >
+              Nurana Rustamli
+            </Link>
+          </div>
         </div>
 
         <motion.div

@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
+import Star3D from '@/components/Star3D'
 import { projects } from './data'
 
 const cardVariants: Variants = {
@@ -21,12 +22,17 @@ export default function ProjectsPage() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
-          <Link
-            href="/"
-            className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
-          >
-            Nurana Rustamli
-          </Link>
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7">
+              <Star3D className="w-full h-full" minHeight="0" />
+            </div>
+            <Link
+              href="/"
+              className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
+            >
+              Nurana Rustamli
+            </Link>
+          </div>
           <h1 className="text-4xl md:text-5xl text-black font-aldrich font-thin-aldrich mt-6">
             Projects
           </h1>
