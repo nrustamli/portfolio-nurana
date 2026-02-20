@@ -26,4 +26,10 @@ export const projects: Project[] = [
     title: 'Galanthus',
     description: 'A brief description of the third project and what it does.',
   },
+  {
+    id: 4,
+    slug: 'gen-nard',
+    title: 'GenNard',
+    description: 'A brief description of the GenNard project and what it does.',
+  },
 ]
