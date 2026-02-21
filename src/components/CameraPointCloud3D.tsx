@@ -246,7 +246,7 @@ export default function CameraPointCloud3D({ className = '' }: { className?: str
 
     // Scene
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#F5F7FA')
+
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
@@ -258,7 +258,7 @@ export default function CameraPointCloud3D({ className = '' }: { className?: str
     camera.position.set(0, 1, 7)
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(container.clientWidth, container.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     container.appendChild(renderer.domElement)

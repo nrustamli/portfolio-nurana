@@ -82,7 +82,7 @@ export default function NavigationCard({
           // Fallback
           <LucideIcons.FileText className={cn('w-12 h-12 mb-4', colorClasses[color])} />
         )}
-        <h3 className="text-lg font-medium text-black">{title}</h3>
+        <h3 className="text-lg font-medium text-black dark:text-white">{title}</h3>
       </motion.div>
     </Link>
   )

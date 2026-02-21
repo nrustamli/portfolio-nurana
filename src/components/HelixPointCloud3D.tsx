@@ -92,7 +92,7 @@ export default function HelixPointCloud3D({ className = '' }: { className?: stri
 
     // Scene
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#F5F7FA')
+
 
     // Camera
     const camera = new THREE.PerspectiveCamera(
@@ -104,7 +104,7 @@ export default function HelixPointCloud3D({ className = '' }: { className?: stri
     camera.position.set(0, 0, 8)
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true })
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(container.clientWidth, container.clientHeight)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     container.appendChild(renderer.domElement)

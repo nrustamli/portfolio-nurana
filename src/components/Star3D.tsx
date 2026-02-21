@@ -21,7 +21,7 @@ export default function Star3D({ className = '', minHeight = '400px' }: Star3DPr
 
     // Scene setup
     const scene = new THREE.Scene()
-    scene.background = new THREE.Color('#F5F7FA')
+    // No background — renderer has alpha:true so the page background shows through
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(

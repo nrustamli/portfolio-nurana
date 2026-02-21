@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import FlowerPointCloud3D from '@/components/FlowerPointCloud3D'
 import Star3D from '@/components/Star3D'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function GalanthusPage() {
   return (
     <main
-      className="min-h-screen relative p-8 md:p-12 lg:p-24"
-      style={{ backgroundColor: '#F5F7FA' }}
+      className="min-h-screen relative p-8 md:p-12 lg:p-24 bg-[#F5F7FA] dark:bg-[#1c1336]"
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
@@ -19,7 +19,7 @@ export default function GalanthusPage() {
             </div>
             <Link
               href="/"
-              className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
+              className="text-lg md:text-xl text-black dark:text-white font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
             >
               Nurana Rustamli
             </Link>
@@ -31,7 +31,7 @@ export default function GalanthusPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
-          <h1 className="text-4xl md:text-5xl text-black font-aldrich font-thin-aldrich mb-10">
+          <h1 className="text-4xl md:text-5xl text-black dark:text-white font-aldrich font-thin-aldrich mb-10">
             Galanthus
           </h1>
 
@@ -65,7 +65,7 @@ export default function GalanthusPage() {
                 </a>  
               </div>
 
-              <p className="text-gray-600 text-base leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -99,6 +99,8 @@ export default function GalanthusPage() {
             ← Back to Projects
           </Link>
         </div>
+
+        <ThemeToggle />
       </div>
     </main>
   )

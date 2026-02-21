@@ -4,12 +4,12 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import DicePointCloud3D from '@/components/DicePointCloud3D'
 import Star3D from '@/components/Star3D'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export default function GenNardPage() {
   return (
     <main
-      className="min-h-screen relative p-8 md:p-12 lg:p-24"
-      style={{ backgroundColor: '#F5F7FA' }}
+      className="min-h-screen relative p-8 md:p-12 lg:p-24 bg-[#F5F7FA] dark:bg-[#1c1336]"
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
@@ -19,7 +19,7 @@ export default function GenNardPage() {
             </div>
             <Link
               href="/"
-              className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
+              className="text-lg md:text-xl text-black dark:text-white font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
             >
               Nurana Rustamli
             </Link>
@@ -31,7 +31,7 @@ export default function GenNardPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
-          <h1 className="text-4xl md:text-5xl text-black font-aldrich font-thin-aldrich mb-10">
+          <h1 className="text-4xl md:text-5xl text-black dark:text-white font-aldrich font-thin-aldrich mb-10">
             GenNard
           </h1>
 
@@ -69,8 +69,8 @@ export default function GenNardPage() {
                   className="
                     inline-flex items-center gap-2
                     px-4 py-2
-                    bg-white/30 text-black
-                    border border-white/40
+                    bg-white/30 dark:bg-white/10 text-black dark:text-white
+                    border border-white/40 dark:border-white/20
                     rounded-md
                     text-sm font-medium
                     hover:bg-white/50
@@ -81,7 +81,7 @@ export default function GenNardPage() {
                 </a>
               </div>
 
-              <p className="text-gray-600 text-base leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed">
                 GenNard is a baggammon
               </p>
               <p className="text-gray-600 text-base leading-relaxed mt-4">
@@ -110,6 +110,8 @@ export default function GenNardPage() {
             ← Back to Projects
           </Link>
         </div>
+
+        <ThemeToggle />
       </div>
     </main>
   )

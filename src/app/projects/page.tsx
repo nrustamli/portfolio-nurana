@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion, type Variants } from 'framer-motion'
 import Star3D from '@/components/Star3D'
 import { projects } from './data'
+import ThemeToggle from '@/components/ThemeToggle'
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -17,8 +18,7 @@ const cardVariants: Variants = {
 export default function ProjectsPage() {
   return (
     <main
-      className="min-h-screen relative p-8 md:p-12 lg:p-24"
-      style={{ backgroundColor: '#F5F7FA' }}
+      className="min-h-screen relative p-8 md:p-12 lg:p-24 bg-[#F5F7FA] dark:bg-[#1c1336]"
     >
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
@@ -28,12 +28,12 @@ export default function ProjectsPage() {
             </div>
             <Link
               href="/"
-              className="text-lg md:text-xl text-black font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
+              className="text-lg md:text-xl text-black dark:text-white font-aldrich font-thin-aldrich hover:opacity-70 transition-opacity"
             >
               Nurana Rustamli
             </Link>
           </div>
-          <h1 className="text-4xl md:text-5xl text-black font-aldrich font-thin-aldrich mt-6">
+          <h1 className="text-4xl md:text-5xl text-black dark:text-white font-aldrich font-thin-aldrich mt-6">
             Projects
           </h1>
         </div>
@@ -64,10 +64,10 @@ export default function ProjectsPage() {
               "
             >
               <div className="p-5">
-                <h2 className="text-lg font-semibold text-black mb-2">
+                <h2 className="text-lg font-semibold text-black dark:text-white mb-2">
                   {project.title}
                 </h2>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                   {project.description}
                 </p>
               </div>
@@ -84,6 +84,8 @@ export default function ProjectsPage() {
             ← Back to Home
           </Link>
         </div>
+
+        <ThemeToggle />
       </div>
     </main>
   )
