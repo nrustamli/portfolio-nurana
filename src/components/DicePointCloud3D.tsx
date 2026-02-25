@@ -224,16 +224,9 @@ export default function DicePointCloud3D({ className = '', xLookAt = 0 }: { clas
     }
     window.addEventListener('resize', handleResize)
 
-    const handleMouseEnter = () => { controls.enableZoom = true }
-    const handleMouseLeave = () => { controls.enableZoom = false }
-    container.addEventListener('mouseenter', handleMouseEnter)
-    container.addEventListener('mouseleave', handleMouseLeave)
-
     return () => {
       disposed = true
       window.removeEventListener('resize', handleResize)
-      container.removeEventListener('mouseenter', handleMouseEnter)
-      container.removeEventListener('mouseleave', handleMouseLeave)
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current)
         animationIdRef.current = null
