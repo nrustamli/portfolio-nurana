@@ -5,6 +5,7 @@ import { motion, type Variants } from 'framer-motion'
 import Star3D from '@/components/Star3D'
 import { projects } from './data'
 import ThemeToggle from '@/components/ThemeToggle'
+import SpinningStarIcon from '@/components/SpinningStarIcon'
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -49,6 +50,7 @@ export default function ProjectsPage() {
               whileHover={{ scale: 1.02, y: -4 }}
               whileTap={{ scale: 0.98 }}
               className="
+                group
                 h-full
                 bg-white/20
                 backdrop-blur-md
@@ -64,6 +66,7 @@ export default function ProjectsPage() {
               "
             >
               <div className="p-5">
+                <SpinningStarIcon className="w-6 h-4 mb-3 text-purple-500" />
                 <h2 className="text-lg font-semibold text-black dark:text-white mb-2">
                   {project.title}
                 </h2>

@@ -6,6 +6,17 @@ import { motion } from 'framer-motion'
 import * as LucideIcons from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import ProjectsIcon from '@/components/ProjectsIcon'
+import ContactIcon from '@/components/ContactIcon'
+import BlogIcon from '@/components/BlogIcon'
+import ResumeIcon from '@/components/ResumeIcon'
+
+const inlineIconMap: Record<string, React.FC<{ className?: string }>> = {
+  '/images/icons/projects_icon.svg': ProjectsIcon,
+  '/images/icons/contact_icon.svg': ContactIcon,
+  '/images/icons/blog_icon.svg': BlogIcon,
+  '/images/icons/resume_icon.svg': ResumeIcon,
+}
 
 interface NavigationCardProps {
   iconName?: string // For Lucide icons
@@ -36,9 +47,8 @@ export default function NavigationCard({
   href,
   color = 'purple',
 }: NavigationCardProps) {
-  // Use custom image icon if provided, otherwise use Lucide icon
-  const useCustomIcon = !!iconPath
   const Icon = iconName ? iconMap[iconName] : null
+  const InlineIcon = iconPath ? inlineIconMap[iconPath] : undefined
 
   return (
     <Link href={href}>
@@ -46,26 +56,33 @@ export default function NavigationCard({
         whileHover={{ scale: 1.02, y: -4 }}
         whileTap={{ scale: 0.98 }}
         className="
-          bg-white/20 
-          backdrop-blur-md 
-          border border-white/30 
-          rounded-lg 
-          shadow-lg 
-          hover:shadow-xl 
+          group
+          bg-white/20
+          backdrop-blur-md
+          border border-white/30
+          rounded-lg
+          shadow-lg
+          hover:shadow-xl
           hover:bg-white/30
-          transition-all 
+          transition-all
           duration-300
-          p-6 
-          cursor-pointer 
-          h-full 
-          flex 
-          flex-col 
-          items-center 
+          p-6
+          cursor-pointer
+          h-full
+          flex
+          flex-col
+          items-center
           justify-center
+          relative
         "
       >
-        {useCustomIcon ? (
-          // Custom image icon
+        {InlineIcon ? (
+          // Animated inline SVG icon
+          <div className="mb-4 w-12 h-12 flex items-center justify-center">
+            <InlineIcon className="w-full h-full" />
+          </div>
+        ) : iconPath ? (
+          // Static image icon fallback
           <div className="mb-4 w-12 h-12 relative flex items-center justify-center">
             <Image
               src={iconPath}
