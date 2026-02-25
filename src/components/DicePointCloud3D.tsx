@@ -108,7 +108,7 @@ function generateDiePoints() {
   }
 }
 
-export default function DicePointCloud3D({ className = '' }: { className?: string }) {
+export default function DicePointCloud3D({ className = '', xLookAt = 0 }: { className?: string; xLookAt?: number }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
   const animationIdRef = useRef<number | null>(null)
@@ -126,8 +126,8 @@ export default function DicePointCloud3D({ className = '' }: { className?: strin
       0.1,
       100,
     )
-    camera.position.set(0, 1.5, 9)
-    camera.lookAt(0, 0, 0)
+    camera.position.set(0, 1.5, 6.5)
+    camera.lookAt(xLookAt, 0, 0)
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(container.clientWidth, container.clientHeight)
@@ -139,9 +139,11 @@ export default function DicePointCloud3D({ className = '' }: { className?: strin
     controls.enableDamping = true
     controls.dampingFactor = 0.05
     controls.enablePan = false
+    controls.enableZoom = false
     controls.minDistance = 4
-    controls.maxDistance = 20
+    controls.maxDistance = 25
     controls.rotateSpeed = 0.5
+    controls.target.set(xLookAt, 0, 0)
 
     const circleTexture = createCircleTexture()
 
@@ -222,9 +224,16 @@ export default function DicePointCloud3D({ className = '' }: { className?: strin
     }
     window.addEventListener('resize', handleResize)
 
+    const handleMouseEnter = () => { controls.enableZoom = true }
+    const handleMouseLeave = () => { controls.enableZoom = false }
+    container.addEventListener('mouseenter', handleMouseEnter)
+    container.addEventListener('mouseleave', handleMouseLeave)
+
     return () => {
       disposed = true
       window.removeEventListener('resize', handleResize)
+      container.removeEventListener('mouseenter', handleMouseEnter)
+      container.removeEventListener('mouseleave', handleMouseLeave)
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current)
         animationIdRef.current = null
@@ -241,13 +250,12 @@ export default function DicePointCloud3D({ className = '' }: { className?: strin
       renderer.dispose()
       rendererRef.current = null
     }
-  }, [])
+  }, [xLookAt])
 
   return (
     <div
       ref={containerRef}
       className={`w-full h-full ${className}`}
-      style={{ minHeight: '400px' }}
     />
   )
 }

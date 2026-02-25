@@ -81,7 +81,7 @@ function generateHelixPoints() {
   }
 }
 
-export default function HelixPointCloud3D({ className = '' }: { className?: string }) {
+export default function HelixPointCloud3D({ className = '', xLookAt = 0 }: { className?: string; xLookAt?: number }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null)
   const animationIdRef = useRef<number | null>(null)
@@ -101,7 +101,8 @@ export default function HelixPointCloud3D({ className = '' }: { className?: stri
       0.1,
       100,
     )
-    camera.position.set(0, 0, 8)
+    camera.position.set(0, 0, 5.5)
+    camera.lookAt(xLookAt, 0, 0)
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
@@ -116,9 +117,10 @@ export default function HelixPointCloud3D({ className = '' }: { className?: stri
     controls.dampingFactor = 0.05
     controls.enablePan = false
     controls.minDistance = 4
-    controls.maxDistance = 20
-    controls.enableZoom = true
+    controls.maxDistance = 25
+    controls.enableZoom = false
     controls.rotateSpeed = 0.5
+    controls.target.set(xLookAt, 0, 0)
 
     // Point cloud
     const { positions, colors } = generateHelixPoints()
@@ -170,10 +172,17 @@ export default function HelixPointCloud3D({ className = '' }: { className?: stri
     }
     window.addEventListener('resize', handleResize)
 
+    const handleMouseEnter = () => { controls.enableZoom = true }
+    const handleMouseLeave = () => { controls.enableZoom = false }
+    container.addEventListener('mouseenter', handleMouseEnter)
+    container.addEventListener('mouseleave', handleMouseLeave)
+
     // Cleanup
     return () => {
       disposed = true
       window.removeEventListener('resize', handleResize)
+      container.removeEventListener('mouseenter', handleMouseEnter)
+      container.removeEventListener('mouseleave', handleMouseLeave)
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current)
         animationIdRef.current = null
@@ -190,13 +199,12 @@ export default function HelixPointCloud3D({ className = '' }: { className?: stri
       renderer.dispose()
       rendererRef.current = null
     }
-  }, [])
+  }, [xLookAt])
 
   return (
     <div
       ref={containerRef}
       className={`w-full h-full ${className}`}
-      style={{ minHeight: '400px' }}
     />
   )
 }
