@@ -25,7 +25,7 @@ export default function ProjectContent({ project }: { project: Project }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
         >
-          <h1 className="text-4xl md:text-5xl text-black dark:text-white font-aldrich font-thin-aldrich mb-6">
+          <h1 className="text-4xl md:text-5xl text-black dark:text-white font-roboto font-medium mb-6">
             {project.title}
           </h1>
 

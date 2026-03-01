@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Aldrich } from "next/font/google";
+import { Inter, Aldrich, Roboto } from "next/font/google";
 import "../styles/globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
-const aldrich = Aldrich({ 
+const aldrich = Aldrich({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-aldrich",
+});
+const roboto = Roboto({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
@@ -34,7 +39,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} ${aldrich.variable}`}>
+      <body className={`${inter.className} ${aldrich.variable} ${roboto.variable}`}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

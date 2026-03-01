@@ -15,6 +15,7 @@ const config: Config = {
       },
       fontFamily: {
         aldrich: ["var(--font-aldrich)", "sans-serif"],
+        roboto: ["var(--font-roboto)", "sans-serif"],
       },
     },
   },
